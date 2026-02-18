@@ -9,7 +9,15 @@ import Combine
 
 final class HomeViewModel {
 
-    @Published var urlState: ValidationState = .none
+    @Published var showInvalidNote: Bool = false
+    @Published var enablePlayButton: Bool = false
+    @Published var enableClearButton: Bool = false
+
+    private var urlState: ValidationState = .none {
+        didSet {
+            handleValidationResult()
+        }
+    }
     private var enteredURL: String = ""
 
     private var validationTask: Task<Void, Never>?
@@ -36,6 +44,12 @@ final class HomeViewModel {
         guard !str.isEmpty else { return .none }
         // TODO: url 검사
         return .invalid
+    }
+
+    private func handleValidationResult() {
+        showInvalidNote = urlState == .invalid
+        enablePlayButton = urlState == .valid
+        enableClearButton = urlState != .none
     }
 
 }
