@@ -20,6 +20,7 @@ final class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.urlTextField.delegate = self
         setBinding()
 
     @IBAction func tappedPasteButton() {
@@ -31,6 +32,15 @@ final class HomeViewController: UIViewController {
     }
 
     // MARK: - Set up
+    private func setTextField() {
+        urlTextField.autocorrectionType = .no
+        urlTextField.spellCheckingType = .no
+        urlTextField.autocapitalizationType = .none
+        urlTextField.clearButtonMode = .always
+        urlTextField.returnKeyType = .done
+        urlTextField.keyboardType = .URL
+    }
+
     private func setBinding() {
         viewModel.$showInvalidNote
             .receive(on: DispatchQueue.main)
@@ -50,3 +60,24 @@ final class HomeViewController: UIViewController {
 
 }
 
+// MARK: - Text Field
+extension HomeViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        urlTextField.becomeFirstResponder()
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersInRanges ranges: [NSValue], replacementString string: String) -> Bool {
+        viewModel.updateURL(textField.text)
+        return true
+    }
+
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        viewModel.updateURL(nil)
+        return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
