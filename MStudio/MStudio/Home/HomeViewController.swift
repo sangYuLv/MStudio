@@ -22,6 +22,8 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.urlTextField.delegate = self
         setBinding()
+        setGesture()
+    }
 
     @IBAction func tappedPasteButton() {
         // TODO: 붙여넣기 기능
@@ -56,6 +58,10 @@ final class HomeViewController: UIViewController {
             }
             .store(in: &cancellables)
     }
+
+    private func setGesture() {
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(view.endEditing(_:)))
+        view.addGestureRecognizer(tapGesture)
     }
 
 }
