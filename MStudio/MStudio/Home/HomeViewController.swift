@@ -27,7 +27,7 @@ final class HomeViewController: UIViewController {
     }
 
     @IBAction func tappedPasteButton() {
-        // TODO: 붙여넣기 기능
+        urlTextField.insertText(UIPasteboard.general.string ?? "")
     }
     
     @IBAction func tappedPlayButton() {
