@@ -23,6 +23,7 @@ final class HomeViewController: UIViewController {
         self.urlTextField.delegate = self
         setBinding()
         setGesture()
+        setTextField()
     }
 
     @IBAction func tappedPasteButton() {
