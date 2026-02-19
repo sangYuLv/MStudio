@@ -6,11 +6,13 @@
 //
 
 import Combine
+import Foundation
 
 final class HomeViewModel {
 
     @Published var showInvalidNote: Bool = false
     @Published var enablePlayButton: Bool = false
+    var validURL: URL?
 
     private var urlState: ValidationState = .none {
         didSet {
@@ -43,8 +45,8 @@ final class HomeViewModel {
         guard let str,
               !str.isEmpty
         else { return .none }
-        // TODO: url 검사
-        return .invalid
+        validURL = await URLValidator.isValidVideoURL(str)
+        return validURL == nil ? .invalid : .valid
     }
 
     private func handleValidationResult() {
