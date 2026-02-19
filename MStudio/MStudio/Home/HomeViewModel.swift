@@ -14,6 +14,8 @@ final class HomeViewModel {
     @Published var enablePlayButton: Bool = false
     var validURL: URL?
 
+    private let urlValidator: URLValidating
+
     private var urlState: ValidationState = .none {
         didSet {
             enablePlayButton = urlState == .valid
@@ -22,6 +24,10 @@ final class HomeViewModel {
     private var enteredURL: String?
 
     private var validationTask: Task<Void, Never>?
+
+    init(urlValidator: URLValidating = URLValidator()) {
+        self.urlValidator = urlValidator
+    }
 
     func updateURL(_ str: String?) {
         enteredURL = str
@@ -50,7 +56,7 @@ final class HomeViewModel {
         }
 
         do {
-            validURL = try await URLValidator.isValidVideoURL(str)
+            validURL = try await urlValidator.isValidVideoURL(str)
             warningNote = ""
         } catch let error as VideoURLValidationError {
             warningNote = error.message

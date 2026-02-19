@@ -7,10 +7,14 @@
 
 import Foundation
 
-struct URLValidator {
+protocol URLValidating {
+    func isValidVideoURL(_ str: String) async throws -> URL
+}
+
+struct URLValidator: URLValidating {
 
     /// 문자열이 유효한 URL 주소이며, 영상 파일 URL인지 확인한다.
-    static func isValidVideoURL(_ str: String) async throws -> URL {
+    func isValidVideoURL(_ str: String) async throws -> URL {
         guard let url = URL(string: str) else {
             throw VideoURLValidationError.invalidURL
         }
