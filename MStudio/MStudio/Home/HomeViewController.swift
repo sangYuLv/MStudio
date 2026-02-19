@@ -42,6 +42,7 @@ final class HomeViewController: UIViewController {
         urlTextField.clearButtonMode = .always
         urlTextField.returnKeyType = .done
         urlTextField.keyboardType = .URL
+        urlTextField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         urlTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 
