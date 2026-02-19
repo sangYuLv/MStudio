@@ -13,6 +13,12 @@ protocol URLValidating {
 
 struct URLValidator: URLValidating {
 
+    private let session: URLSession
+
+    init(session: URLSession = .shared) {
+        self.session = session
+    }
+
     /// 문자열이 유효한 URL 주소이며, 영상 파일 URL인지 확인한다.
     func isValidVideoURL(_ str: String) async throws -> URL {
         guard let url = URL(string: str) else {
@@ -23,7 +29,7 @@ struct URLValidator: URLValidating {
         request.httpMethod = "HEAD"
         request.timeoutInterval = 5
 
-        let (_, response) = try await URLSession.shared.data(for: request)
+        let (_, response) = try await session.data(for: request)
         guard let httpResponse = response as? HTTPURLResponse else {
             throw VideoURLValidationError.networkError
         }
