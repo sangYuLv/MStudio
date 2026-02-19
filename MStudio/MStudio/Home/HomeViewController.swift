@@ -11,7 +11,7 @@ import UIKit
 final class HomeViewController: UIViewController {
 
     @IBOutlet weak var urlTextField: UITextField!
-    @IBOutlet weak var invalidNote: UILabel!
+    @IBOutlet weak var warningNote: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var pasteButton: UIButton!
 
@@ -46,10 +46,10 @@ final class HomeViewController: UIViewController {
     }
 
     private func setBinding() {
-        viewModel.$showInvalidNote
+        viewModel.$warningNote
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] state in
-                self?.invalidNote.isHidden = !state
+            .sink { [weak self] note in
+                self?.warningNote.text = note
             }
             .store(in: &cancellables)
 

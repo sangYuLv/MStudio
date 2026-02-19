@@ -82,10 +82,10 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="invalidNote" destination="7H8-TV-srt" id="wET-bF-JbN"/>
                         <outlet property="pasteButton" destination="BGH-fm-9Qm" id="uFM-Nb-M8E"/>
                         <outlet property="playButton" destination="qW0-XL-JHc" id="kc5-vi-SFz"/>
                         <outlet property="urlTextField" destination="0rZ-1q-I06" id="DiC-Du-uhb"/>
+                        <outlet property="warningNote" destination="7H8-TV-srt" id="Rb4-Ti-HBx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

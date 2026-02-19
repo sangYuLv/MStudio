@@ -10,13 +10,13 @@ import Foundation
 
 final class HomeViewModel {
 
-    @Published var showInvalidNote: Bool = false
+    @Published var warningNote: String = ""
     @Published var enablePlayButton: Bool = false
     var validURL: URL?
 
     private var urlState: ValidationState = .none {
         didSet {
-            handleValidationResult()
+            enablePlayButton = urlState == .valid
         }
     }
     private var enteredURL: String?
@@ -45,13 +45,19 @@ final class HomeViewModel {
         guard let str,
               !str.isEmpty
         else { return .none }
-        validURL = await URLValidator.isValidVideoURL(str)
-        return validURL == nil ? .invalid : .valid
-    }
 
-    private func handleValidationResult() {
-        showInvalidNote = urlState == .invalid
-        enablePlayButton = urlState == .valid
+        do {
+            validURL = try await URLValidator.isValidVideoURL(str)
+            warningNote = ""
+        } catch let error as VideoURLValidationError {
+            warningNote = error.message
+            validURL = nil
+        } catch {
+            warningNote = "알 수 없는 오류가 발생했습니다."
+            validURL = nil
+        }
+
+        return validURL == nil ? .invalid : .valid
     }
 
 }
