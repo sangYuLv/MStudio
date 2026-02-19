@@ -42,6 +42,7 @@ final class HomeViewController: UIViewController {
         urlTextField.clearButtonMode = .always
         urlTextField.returnKeyType = .done
         urlTextField.keyboardType = .URL
+        urlTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     }
 
     private func setBinding() {
@@ -73,11 +74,6 @@ extension HomeViewController: UITextFieldDelegate {
         urlTextField.becomeFirstResponder()
     }
 
-    func textField(_ textField: UITextField, shouldChangeCharactersInRanges ranges: [NSValue], replacementString string: String) -> Bool {
-        viewModel.updateURL(textField.text)
-        return true
-    }
-
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         viewModel.updateURL(nil)
         return true
@@ -86,5 +82,9 @@ extension HomeViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+        viewModel.updateURL(textField.text)
     }
 }
