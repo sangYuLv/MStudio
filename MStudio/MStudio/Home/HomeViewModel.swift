@@ -44,7 +44,10 @@ final class HomeViewModel {
     private func validateURL(_ str: String?) async -> ValidationState {
         guard let str,
               !str.isEmpty
-        else { return .none }
+        else {
+            warningNote = ""
+            return .none
+        }
 
         do {
             validURL = try await URLValidator.isValidVideoURL(str)
