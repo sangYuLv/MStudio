@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="hje-ys-9AR">
-                                <rect key="frame" x="138" y="468" width="117.33333333333331" height="62.666666666666629"/>
+                                <rect key="frame" x="138" y="466" width="117.33333333333331" height="62.666666666666629"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qW0-XL-JHc">
                                         <rect key="frame" x="0.0" y="0.0" width="117.33333333333333" height="34.333333333333336"/>
@@ -38,20 +38,20 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MSTUDIO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dVz-6W-Irp">
-                                <rect key="frame" x="121.66666666666667" y="268.33333333333331" width="149.66666666666663" height="40.666666666666686"/>
+                                <rect key="frame" x="121.66666666666667" y="270.33333333333331" width="149.66666666666663" height="40.666666666666686"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="QAy-Ga-4DN">
-                                <rect key="frame" x="35" y="409" width="323" height="34"/>
+                                <rect key="frame" x="35" y="411" width="323" height="30"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="URL을 입력해주세요." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0rZ-1q-I06">
-                                        <rect key="frame" x="0.0" y="0.0" width="247.66666666666666" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="URL을 입력해주세요." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0rZ-1q-I06">
+                                        <rect key="frame" x="0.0" y="0.0" width="247.66666666666666" height="30"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGH-fm-9Qm">
-                                        <rect key="frame" x="260.66666666666669" y="3.3333333333333126" width="62.333333333333314" height="27.333333333333329"/>
+                                        <rect key="frame" x="260.66666666666669" y="1.3333333333333144" width="62.333333333333314" height="27.333333333333332"/>
                                         <color key="tintColor" name="AccentColor"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="붙여넣기">
